@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import '/DayView.css';
 
 class App extends Component {
   render() {
