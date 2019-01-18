@@ -1,5 +1,39 @@
-div {
-border: 3px solid black;
-width: 150px;
-height: 200px;
+.weather {
+    position: relative;
+    margin-left: 100px;
+    top: 100px;
+    background-color: lightblue;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 150px;
+    width: 200px;
+    padding: 10px;
 }
+.weekday {
+    position: relative;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px; 
+
+}
+
+img {
+    position: relative;
+    left: 50px;
+    
+}
+
+.tempHigh {
+    display: inline;
+    position: relative;
+   text-align: center;
+}
+
+.tempLow {
+    display: inline;
+    position: relative;
+    text-align: center;
+    
+}
+
+
