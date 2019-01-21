@@ -29,13 +29,14 @@ class DayView extends Component {
     }
 
     return (
-
+ <div class="dayview">
       <div class="weather">
 
-        <div class="weekday">Mittwoch</div>
-        <img src={img} alt='sunny' width="100px" height="100px" /> {this.props.weather}
+        <div class="weekday">{this.props.weekDay}</div>
+        <img src={img} alt='sunny' width="100px" height="100px" />
         <div class="tempHigh">{this.props.highTemp}°</div>
-        <div class="tempLow">17°</div>
+        <div class="tempLow">{this.props.lowTemp}°</div>
+      </div>
       </div>
     );
   }

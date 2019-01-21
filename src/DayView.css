@@ -1,7 +1,4 @@
 .weather {
-    position: relative;
-    margin-left: 100px;
-    top: 100px;
     background-color: lightblue;
     border: 2px solid black;
     border-radius: 10px;
@@ -9,14 +6,16 @@
     width: 200px;
     padding: 10px;
 }
+.dayview{
+    display: inline-block;
+}
 .weekday {
     position: relative;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px; 
+    font-size: 25px;
 
 }
-
 img {
     position: relative;
     left: 50px;
@@ -26,7 +25,6 @@ img {
 .tempHigh {
     display: inline-block;
   width: 50px;
-  height: 100px;
   margin-left:50px;
   padding: 5px;
      
