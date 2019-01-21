@@ -24,15 +24,18 @@ img {
 }
 
 .tempHigh {
-    display: inline;
-    position: relative;
-   text-align: center;
+    display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+     
+ 
 }
 
 .tempLow {
     display: inline;
     position: relative;
-    text-align: center;
+    left: 60px;
     
 }
 
