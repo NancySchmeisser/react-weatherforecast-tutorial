@@ -5,8 +5,13 @@ import WeekView from './WeekView';
 class Weather extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data: undefined,
+    }
 
-    this.state =
+  }
+  refreshData = () => {
+    this.setState(
       {
         data: [
           {
@@ -40,12 +45,17 @@ class Weather extends Component {
             lowTemp: -1,
           }
         ]
-      }
+      });
+
   }
   render() {
 
     return (
-      <WeekView data={this.state.data}/>
+      <div>
+        <label>Geben Sie einen Ort ein<input id="ort" name="Ort" placeholder="Suche nach Ort"/></label>
+        <button onClick={this.refreshData}>Refresh</button><br />
+        {this.state.data ? <WeekView data={this.state.data} /> : "Bitte Refresh drücken"}
+      </div>
     );
   }
 }
