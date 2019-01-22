@@ -52,8 +52,9 @@ class Weather extends Component {
 
     return (
       <div>
-        <label>Geben Sie einen Ort ein<input id="ort" name="Ort" placeholder="Suche nach Ort"/></label>
-        <button onClick={this.refreshData}>Refresh</button><br />
+        <label id="label">Geben Sie einen Ort ein</label><br />
+        <input type="text" id="ort" name="Ort" placeholder="Suche nach Ort"/>
+        <button id="button" onClick={this.refreshData}>Refresh</button><br />
         {this.state.data ? <WeekView data={this.state.data} /> : "Bitte Refresh drücken"}
       </div>
     );
