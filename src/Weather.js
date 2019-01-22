@@ -3,14 +3,26 @@ import WeekView from './WeekView';
 
 
 class Weather extends Component {
+  apiKey = "afdf27fdc3f898aa7cb96e245ca46d89";
+  kelvinZero = -273.15;
+
   constructor(props) {
     super(props);
     this.state = {
+      city: "test",
       data: undefined,
     }
 
   }
-  refreshData = () => {
+  handleChangeCity = (event) => {
+    this.setState(
+      {
+        city: event.target.value
+      }
+    );
+  }
+
+  handleRefreshData = () => {
     this.setState(
       {
         data: [
@@ -53,8 +65,8 @@ class Weather extends Component {
     return (
       <div>
         <label id="label">Geben Sie einen Ort ein</label><br />
-        <input type="text" id="ort" name="Ort" placeholder="Suche nach Ort"/>
-        <button id="button" onClick={this.refreshData}>Refresh</button><br />
+        <input type="text" id="ort" name="Ort" placeholder="Suche nach Ort" onChange={this.handleChangeCity} value={this.state.city} />
+        <button id="button" onClick={this.handleRefreshData}>Refresh</button><br />
         {this.state.data ? <WeekView data={this.state.data} /> : "Bitte Refresh drücken"}
       </div>
     );
