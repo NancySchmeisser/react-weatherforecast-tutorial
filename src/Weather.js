@@ -5,7 +5,15 @@ import WeekView from './WeekView';
 class Weather extends Component {
   apiKey = "afdf27fdc3f898aa7cb96e245ca46d89";
   kelvinZero = -273.15;
-
+  weekDayTexts = [
+    "Sonntag",
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+  ]
   constructor(props) {
     super(props);
     this.state = {
@@ -23,41 +31,40 @@ class Weather extends Component {
   }
 
   handleRefreshData = () => {
-    this.setState(
-      {
-        data: [
-          {
-            weekDay: "Montag",
-            weather: "sunny",
-            highTemp: 5,
-            lowTemp: -1,
-          },
-          {
-            weekDay: "Dienstag",
-            weather: "sunny",
-            highTemp: 5,
-            lowTemp: -1,
-          },
-          {
-            weekDay: "Mittwoch",
-            weather: "sunny",
-            highTemp: 5,
-            lowTemp: -1,
-          },
-          {
-            weekDay: "Donnerstag",
-            weather: "sunny",
-            highTemp: 5,
-            lowTemp: -1,
-          },
-          {
-            weekDay: "Freitag",
-            weather: "sunny",
-            highTemp: 5,
-            lowTemp: -1,
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=Schmalkalden,DE&appid=afdf27fdc3f898aa7cb96e245ca46d89")
+      .then(result => result.json())
+      .then(data => {
+
+        const forecast = data.list.slice(5, 10).map(item => {
+          let weather="sunny";
+          if (item.weather[0].id < 599){
+            weather="rain"
           }
-        ]
-      });
+          if (item.weather[0].id > 599 && item.weather[0].id < 699){
+            weather="snowy"
+          }
+          if (item.weather[0].id > 699 && item.weather[0].id <799){
+            weather="cloudy"
+          }
+          if (item.weather[0].id > 800){
+            weather="cloudy"
+          }
+
+          return ({
+            weekDay: this.weekDayTexts[new Date(item.dt * 1000).getDay()],
+            highTemp: Math.round((item.main.temp_max + this.kelvinZero) * 10) / 10,
+            lowTemp: Math.round((item.main.temp_min + this.kelvinZero) * 10) / 10,
+            weather: weather,
+          });
+        }
+        );
+
+        this.setState(
+          {
+            data: forecast
+          }
+        )
+      })
 
   }
   render() {
