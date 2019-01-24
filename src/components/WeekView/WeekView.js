@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DayView from './DayView';
+import DayView from '../DayView/DayView';
 
 
 class WeekView extends Component {

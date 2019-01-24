@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WeekView from './WeekView';
+import WeekView from '../WeekView/WeekView';
 
 
 class Weather extends Component {
